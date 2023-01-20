@@ -19,3 +19,4 @@ repo-add --verify --sign $RSYNC/naru.db.tar.gz $PACKAGE/*.pkg.tar.zst
 mv $PACKAGE/*.pkg.tar.zst $RSYNC/
 mv $PACKAGE/*.pkg.tar.zst.sig $RSYNC/
 
+rsync -avzhP $RSYNC jhyub@odroid:~/naru
