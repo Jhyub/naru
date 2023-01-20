@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ "$#" -ne 1 ]; then
+    echo "No package name provided"
+    exit 1
+fi
+
+RSYNC=$HOME/rsync/naru
+CHROOT=$HOME/chroot
+PACKAGE=$PWD/$1
+
+cd $PACKAGE
+arch-nspawn $CHROOT/root pacman -Syu
+makechrootpkg -c -r $CHROOT
+rm $PACKAGE/*-debug-*.pkg.tar.zst
+gpg --use-agent --detach-sig $PACKAGE/*.pkg.tar.zst 
+
+repo-add --verify --sign $RSYNC/naru.db.tar.gz $PACKAGE/*.pkg.tar.zst
+mv $PACKAGE/*.pkg.tar.zst $RSYNC/
+mv $PACKAGE/*.pkg.tar.zst.sig $RSYNC/
+
