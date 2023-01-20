@@ -1,0 +1,37 @@
+From 16373159c8b9b9f6e4a55084dfb054a96ac03974 Mon Sep 17 00:00:00 2001
+From: Janghyub Seo <jhyub06@gmail.com>
+Date: Thu, 19 Jan 2023 23:32:25 +0900
+Subject: [PATCH] only change files that existed at 0.19.0
+
+---
+ services/sddm-autologin.pam | 1 +
+ services/sddm.service.in    | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/services/sddm-autologin.pam b/services/sddm-autologin.pam
+index b42991e..baa4815 100755
+--- a/services/sddm-autologin.pam
++++ b/services/sddm-autologin.pam
+@@ -4,6 +4,7 @@ auth        required    pam_faillock.so preauth
+ auth        required    pam_shells.so
+ auth        required    pam_nologin.so
+ auth        required    pam_permit.so
++auth        optional    pam_sddm.so
+ -auth       optional    pam_gnome_keyring.so
+ -auth       optional    pam_kwallet5.so
+ account     include     system-local-login
+diff --git a/services/sddm.service.in b/services/sddm.service.in
+index d787019..b83a9fb 100644
+--- a/services/sddm.service.in
++++ b/services/sddm.service.in
+@@ -10,6 +10,7 @@ StartLimitBurst=2
+ [Service]
+ ExecStart=@CMAKE_INSTALL_FULL_BINDIR@/sddm
+ Restart=always
++KeyringMode=inherit
+ 
+ [Install]
+ Alias=display-manager.service
+-- 
+2.39.1
+
