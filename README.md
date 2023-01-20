@@ -1,13 +1,13 @@
 # Naru
 Naru is my personal [unofficial arch repository](https://wiki.archlinux.org/title/Unofficial_user_repositories) that contains patches which seem to take forever to be applied.  
 
-# Add to your pacman
+## Add to your pacman
 server is not ready yet.
 
-# Packages
+## Packages
 * [sddm](#sddm) - +pamautounlock
 
-## sddm
+### sddm
 * Original package: [sddm](https://archlinux.org/packages/extra/x86_64/sddm/)
 * Version: 0.19.0
 * Patches
