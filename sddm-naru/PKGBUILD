@@ -18,7 +18,8 @@ backup=('usr/share/sddm/scripts/Xsetup'
         'etc/pam.d/sddm'
         'etc/pam.d/sddm-autologin'
         'etc/pam.d/sddm-greeter')
-provides=(display-manager)
+provides=("$_pkgname" display-manager)
+conflicts=("$_pkgname")
 source=(https://github.com/$_pkgname/$_pkgname/archive/v$_pkgver/$_pkgname-$_pkgver.tar.gz
 		0001-Add-pam_sddm.patch
 		0002-Edit-systemd-units-and-pam-confs-for-pam_sddm-to-wor.patch)
