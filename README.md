@@ -19,6 +19,6 @@ Server = https://naru.jhyub.dev/$repo
 
 ### sddm-naru
 * Original package: [sddm](https://archlinux.org/packages/extra/x86_64/sddm/)
-* Version: 0.19.0
+* Version: 0.20.0
 * Patches
     * +pamautounlock - Automatically unlock the keyring with passphrase entered on LUKS decryption if autologin is enabled. Applies this [PR](https://github.com/sddm/sddm/pull/1550).
